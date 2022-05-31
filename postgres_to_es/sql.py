@@ -53,9 +53,9 @@ SELECT distinct
     pfw.role, 
     p.id, 
     p.full_name,
-    g.name,
+    g.name as genre_name,
     g.id as genre_id,
-    s.name,
+    s.name as subscription_name,
     s.id as subscription_id
 FROM content.film_work fw
 LEFT JOIN content.person_film_work pfw ON pfw.film_work_id = fw.id

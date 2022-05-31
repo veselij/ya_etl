@@ -64,8 +64,8 @@ def transform_movies(bacth: list) -> dict[str, BaseDoc]:
                 description=row['description'],
             )
         doc = all_objects[doc_id]
-        genre_item ={'uuid': row['genre_id'], 'name': row['name']} 
-        subscription_item ={'uuid': row['subscription_id'], 'name': row['name']} 
+        genre_item ={'uuid': row['genre_id'], 'name': row['genre_name']} 
+        subscription_item ={'uuid': row['subscription_id'], 'name': row['subscription_name']} 
         if genre_item not in doc.genre:
             doc.genre.append(genre_item)
         if subscription_item not in doc.subscription:
