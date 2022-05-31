@@ -20,6 +20,7 @@ class Doc(BaseDoc):
     description: str
     directors: list[dict] = field(default_factory=list)
     genre: list[dict] = field(default_factory=list)
+    subscription: list[dict] = field(default_factory=list)
     actors: list[dict] = field(default_factory=list)
     writers: list[dict] = field(default_factory=list)
 
@@ -64,8 +65,11 @@ def transform_movies(bacth: list) -> dict[str, BaseDoc]:
             )
         doc = all_objects[doc_id]
         genre_item ={'uuid': row['genre_id'], 'name': row['name']} 
+        subscription_item ={'uuid': row['subscription_id'], 'name': row['name']} 
         if genre_item not in doc.genre:
             doc.genre.append(genre_item)
+        if subscription_item not in doc.subscription:
+            doc.subscription.append(subscription_item)
         add_roles(doc, row['role'], row['id'], row['full_name'])
     return all_objects
 

@@ -54,12 +54,16 @@ SELECT distinct
     p.id, 
     p.full_name,
     g.name,
-    g.id as genre_id
+    g.id as genre_id,
+    s.name,
+    s.id as subscription_id
 FROM content.film_work fw
 LEFT JOIN content.person_film_work pfw ON pfw.film_work_id = fw.id
 LEFT JOIN content.person p ON p.id = pfw.person_id
 LEFT JOIN content.genre_film_work gfw ON gfw.film_work_id = fw.id
 LEFT JOIN content.genre g ON g.id = gfw.genre_id
+LEFT JOIN content.subscription_film_work sfw ON sfw.film_work_id = fw.id
+LEFT JOIN content.subscription s ON s.id = sfw.subscription_id
 WHERE fw.id IN ({film_ids})
 ORDER BY fw.id;
 """

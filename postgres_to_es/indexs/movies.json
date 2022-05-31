@@ -60,6 +60,18 @@
           }
         }
       },
+      "subscription": {
+        "type": "nested",
+        "dynamic": "strict",
+        "properties": {
+          "uuid": {
+            "type": "keyword"
+          },
+          "name": {
+            "type": "keyword"
+          }
+        }
+      },
       "title": {
         "type": "text",
         "analyzer": "ru_en",
